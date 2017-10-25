@@ -8,7 +8,6 @@
 
 #import "NVImageBrowserTableViewCell.h"
 #import "NVLabel.h"
-#import "DBImageView.h"
 #import "NavyUIKit.h"
 
 
@@ -80,36 +79,36 @@
     [dataModel.imageNameds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSString* imageNamed = (NSString*)obj;
         
-        DBImageView* imageView = [[DBImageView alloc] initWithFrame:CGRectMake(x, spacing, width, CELL_HEIGHT - 40.0f)];
-        [self.scrollView addSubview:imageView];
-        [imageView setImageWithPath:imageNamed];
+//        DBImageView* imageView = [[DBImageView alloc] initWithFrame:CGRectMake(x, spacing, width, CELL_HEIGHT - 40.0f)];
+//        [self.scrollView addSubview:imageView];
+//        [imageView setImageWithPath:imageNamed];
 
         
-        UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
-        [imageView setUserInteractionEnabled:YES];
-        [imageView addGestureRecognizer:tapRecognizer];
-        
-        
-        NVLabel* label      = [[NVLabel alloc] initWithFrame:CGRectMake(x, CELL_HEIGHT - 30.0f, width, 20.0f)];
-        [self.scrollView addSubview:label];
-        label.font          = nvNormalFontWithSize(12.0f);
-        label.textAlignment = NSTextAlignmentCenter;
-        label.textColor     = COLOR_HM_LIGHT_BLACK;
-        label.text          = dataModel.titles[idx];
-        
-        x += spacing + width;
+//        UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
+//        [imageView setUserInteractionEnabled:YES];
+//        [imageView addGestureRecognizer:tapRecognizer];
+//        
+//        
+//        NVLabel* label      = [[NVLabel alloc] initWithFrame:CGRectMake(x, CELL_HEIGHT - 30.0f, width, 20.0f)];
+//        [self.scrollView addSubview:label];
+//        label.font          = nvNormalFontWithSize(12.0f);
+//        label.textAlignment = NSTextAlignmentCenter;
+//        label.textColor     = COLOR_HM_LIGHT_BLACK;
+//        label.text          = dataModel.titles[idx];
+//        
+//        x += spacing + width;
     }];
     
     self.scrollView.contentSize = CGSizeMake([dataModel.imageNameds count] * (width + spacing) + spacing, CELL_HEIGHT);
 }
 
-- (void) onTap:(UIGestureRecognizer *)recognizer {
-    DBImageView* imageView = (DBImageView*)recognizer.view;
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(imageBrowserTableViewCell:didClickImagePath:)]) {
-        [self.delegate imageBrowserTableViewCell:self didClickImagePath:imageView.remoteImage.imageURL.absoluteString];
-    }
-}
+//- (void) onTap:(UIGestureRecognizer *)recognizer {
+//    DBImageView* imageView = (DBImageView*)recognizer.view;
+//
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(imageBrowserTableViewCell:didClickImagePath:)]) {
+//        [self.delegate imageBrowserTableViewCell:self didClickImagePath:imageView.remoteImage.imageURL.absoluteString];
+//    }
+//}
 
 
 + (CGFloat) heightForCell {
